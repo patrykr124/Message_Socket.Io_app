@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base{
+  body{
+    @apply bg-[#1A1F24] text-white
+  }
+
+  .input_form{
+    @apply p-2 border-gray-500 rounded-lg
+  }
+}
