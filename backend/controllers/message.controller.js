@@ -1,9 +1,11 @@
 const User = require("../models/user.model");
 const Message = require("../models/message.model");
+const cloudinary = require("../lib/cloudinary");
 //pobieramy wszystkich  użytkowników
 const getUsersForSidebar = async (req, res) => {
   try {
     const loggedUserId = req.user._id;
+
     const filteredUser = await User.find({ _id: { $ne: loggedUserId } }).select(
       "-password"
     );
@@ -29,7 +31,10 @@ const getMessage = async (req, res) => {
     res.status(200).json(messages);
   } catch (error) {
     console.log(error);
-    res.status(500).json("Error in getMessages controller", error.message);
+    res.status(500).json({
+      error: "Error in getMessages controller",
+      message: error.message,
+    });
   }
 };
 

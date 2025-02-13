@@ -87,11 +87,9 @@ const update = async (req, res) => {
       const uploadResponse = await cloudinary.uploader.upload(profilePic);
       updateData.profilePic = uploadResponse.secure_url;
     }
-
     if (fullName) {
       updateData.fullName = fullName;
     }
-
     const updateUser = await User.findByIdAndUpdate(userId, updateData, {
       new: true,
     });
