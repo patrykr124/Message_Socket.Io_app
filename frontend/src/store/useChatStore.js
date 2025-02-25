@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
-
-export const useChatStore = create((set,get) => ({
+import { useAuthStore } from "./useAuthStore";
+export const useChatStore = create((set, get) => ({
   messages: [],
   users: [],
   selectedUser: null,
@@ -17,7 +17,7 @@ export const useChatStore = create((set,get) => ({
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
-    } finally{
+    } finally {
       set({ isUsersLoading: false });
     }
   },
@@ -30,15 +30,18 @@ export const useChatStore = create((set,get) => ({
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
-    } finally{
+    } finally {
       set({ isMessagesLoading: false });
     }
   },
 
-  sendMessage : async (data) => {
-    const{ messages, selectedUser } = get();
+  sendMessage: async (data) => {
+    const { messages, selectedUser } = get();
     try {
-      const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, data);
+      const res = await axiosInstance.post(
+        `/messages/send/${selectedUser._id}`,
+        data
+      );
       set({ messages: [...messages, res.data] });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -46,5 +49,32 @@ export const useChatStore = create((set,get) => ({
     }
   },
 
-  setSelectedUser: (user) => set({selectedUser: user }),
+  subscribeToMessages: () => {
+    const { selectedUser } = get();
+    if (!selectedUser) return;
+    const socket = useAuthStore.getState().socket;
+    socket.on("newMessage", (newMessages) => {
+      set({ messages: [...get().messages, newMessages] });
+    });
+  },
+
+  unsubscribeFromMessages: () => {
+    const socket = useAuthStore.getState().socket;
+    socket.off("newMessage");
+  },
+
+  getLastMessage: async () => {
+    set({ isUsersLoading: true });
+    try {
+      const res = await axiosInstance.get("/messages/lastMessage");
+      set({ users: res.data });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      set({ isUsersLoading: false });
+    }
+  },
+
+  setSelectedUser: (user) => set({ selectedUser: user }),
 }));

@@ -5,6 +5,11 @@
   body{
     @apply bg-[#1A1F24] text-white
   }
+  
+
+  .wrapper{
+    @apply max-w-7xl mx-auto
+  }
 
   .input_form{
     @apply p-2 border-gray-500 rounded-lg

@@ -1,17 +1,15 @@
-import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare} from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import { useState } from "react";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-   
     email: "",
     password: "",
   });
   const [errorValidation, setErrorValidation] = useState({
-   
     email: "",
     password: "",
   });
@@ -64,7 +62,6 @@ export default function LoginPage() {
             </div>
           </div>
           <form onSubmit={handleSubmit} className="space-y-6">
-            
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium mb-1">E-mail</span>
@@ -140,12 +137,12 @@ export default function LoginPage() {
           <div className="text-center">
             <p className="text-base-content/60">Dont have an account? </p>
             <Link to={"/signup"} className="link link-primary">
-            Sign up
+              Sign up
             </Link>
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex p-6 2xl:pr-56">
         <video
           className="h-screen w-full object-contain"
           autoPlay
