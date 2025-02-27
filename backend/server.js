@@ -18,11 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://message-socket-io-appfrontend-pz8cqvt35.vercel.app",
-      "https://message-socket-io-appfrontend-pxozrycho.vercel.app",
-      "https://message-socket-io-appfrontend-or406336c.vercel.app",
-      "https://message-socket-io-appfrontend.vercel.app",
-      "https://message-socket-io-appserver.vercel.app"
+      "https://message-socket-io-app-server.onrender.com"
     ],
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
     credentials: true,
