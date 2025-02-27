@@ -16,7 +16,7 @@ app.use(
       "http://localhost:5173",
       "https://message-socket-io-appfrontend-pz8cqvt35.vercel.app",
       "https://message-socket-io-appfrontend-pxozrycho.vercel.app",
-      "https://message-socket-io-appfrontend.vercel.app",
+      "https://message-socket-io-appfrontend-or406336c.vercel.app",
       "https://message-socket-io-appserver.vercel.app"
     ],
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
