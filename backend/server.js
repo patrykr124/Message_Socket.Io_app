@@ -8,6 +8,9 @@ const authRoutes = require("./routes/auth.routes");
 const messageRoutes = require("./routes/message.routes");
 const { connectDB } = require("./lib/db");
 const { server, app, io } = require("./lib/socket.io/socket");
+app.use(express.json({ limit: "500mb" }));
+app.use(cookieParser());
+app.use(express.urlencoded({ limit: "500mb", extended: true }));
 
 const PORT = process.env.PORT || 5000;
 app.use(
@@ -18,7 +21,6 @@ app.use(
       "https://message-socket-io-appfrontend-pxozrycho.vercel.app",
       "https://message-socket-io-appfrontend-or406336c.vercel.app",
       "https://message-socket-io-appfrontend.vercel.app",
-      "https://message-socket-io-appfrontend.vercel.app",
       "https://message-socket-io-appserver.vercel.app"
     ],
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
@@ -28,9 +30,7 @@ app.use(
 );
 
 
-app.use(express.json({ limit: "500mb" }));
-app.use(cookieParser());
-app.use(express.urlencoded({ limit: "500mb", extended: true }));
+
 
 app.get("/", (req, res) => {
   res.send("Witaj w mojej aplikacji!");
