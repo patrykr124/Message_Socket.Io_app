@@ -24,7 +24,6 @@ app.use(
       "https://message-socket-io-appserver.vercel.app"
     ],
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
-    optionsSuccessStatus: 200,
     credentials: true,
   })
 );

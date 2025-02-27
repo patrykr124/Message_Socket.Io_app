@@ -10,6 +10,7 @@ const io = new Server(server, {
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://message-socket-io-appfrontend.vercel.app"
      
     ],
     credentials: true,
