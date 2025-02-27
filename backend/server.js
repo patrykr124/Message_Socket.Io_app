@@ -12,7 +12,7 @@ const { server, app, io } = require("./lib/socket.io/socket");
 const PORT = process.env.PORT || 5000;
 app.use(
   cors({
-    origin: ["http://localhost:5173","https://message-socket-io-appfrontend-pz8cqvt35.vercel.app"],
+    origin: ["http://localhost:5173","https://message-socket-io-appfrontend-pz8cqvt35.vercel.app", "https://message-socket-io-appfrontend-pxozrycho.vercel.app"],
     
     credentials: true,
   })
