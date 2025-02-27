@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth.routes");
 const messageRoutes = require("./routes/message.routes");
 const { connectDB } = require("./lib/db");
 const { server, app, io } = require("./lib/socket.io/socket");
+
 app.use(express.json({ limit: "500mb" }));
 app.use(cookieParser());
 app.use(express.urlencoded({ limit: "500mb", extended: true }));
