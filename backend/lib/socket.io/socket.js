@@ -13,6 +13,7 @@ const io = new Server(server, {
       "https://message-socket-io-appfrontend.vercel.app"
      
     ],
+    methods: ["GET", "POST"],
     credentials: true,
   },
 });
