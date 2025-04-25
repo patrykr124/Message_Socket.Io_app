@@ -5,6 +5,7 @@ import { useChatStore } from "../store/useChatStore";
 
 export default function HomePage() {
   const { selectedUser } = useChatStore();
+  
   return (
     <div className="h-screen bg-base-200">
       <div className="flex items-center justify-center wrapper pt-20 px-4">
