@@ -15,7 +15,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://message-socket-io-appfrontend.vercel.app",
-      "https://message-socket-io-appfrontend-kkrucrzyb.vercel.app"
+      "https://message-socket-io-appfrontend-kkrucrzyb.vercel.app",
+      "https://message-socket-io-appfrontend-nmnzmhkwx.vercel.app"
     ],
 
     credentials: true,
