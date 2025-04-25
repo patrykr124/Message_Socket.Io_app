@@ -12,7 +12,11 @@ const { server, app, io } = require("./lib/socket.io/socket");
 const PORT = process.env.PORT || 5000;
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://message-socket-io-appfrontend.vercel.app",
+    ],
+
     credentials: true,
   })
 );
@@ -22,6 +26,9 @@ app.use(express.urlencoded({ limit: "500mb", extended: true }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 server.listen(PORT, () => {
   connectDB();
